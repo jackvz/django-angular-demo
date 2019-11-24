@@ -1,0 +1,61 @@
+<div *ngIf="employee" [formGroup]="frm">
+  <h2 *ngIf="isAdd">Create</h2>
+  <h2 *ngIf="isAdd == false">{{employee.person.first_name | uppercase}} {{employee.person.last_name | uppercase}} Details</h2>
+
+  <div>
+    <label>Last Name:
+      <input id="last_name" type="text" formControlName="last_name" required placeholder="Last Name"/>
+    </label>
+  </div>
+  <div *ngIf="frm.get('last_name').invalid && showInputErrors" class="alert alert-danger">
+    <div *ngIf="frm.get('last_name').errors.required">
+      Required.
+    </div>
+  </div>
+  <div>
+    <label>First Name:
+      <input id="first_name" type="text" formControlName="first_name" placeholder="First Name"/>
+    </label>
+  </div>
+  <div *ngIf="frm.get('first_name').invalid && showInputErrors" class="alert alert-danger">
+    <div *ngIf="frm.get('first_name').errors.required">
+      Required.
+    </div>
+  </div>
+  <div>
+    <label>Birth Date:
+      <input id="birth_date" type="date" formControlName="birth_date" placeholder="Birth Date"/>
+    </label>
+  </div>
+  <div *ngIf="frm.get('birth_date').invalid && showInputErrors" class="alert alert-danger">
+    <div *ngIf="frm.get('birth_date').errors.required">
+      Required.
+    </div>
+  </div>
+  <div>
+    <label>Employee Number:
+      <input id="employee_num" type="number" formControlName="employee_num" placeholder="Employee Number"/>
+    </label>
+  </div>
+  <div *ngIf="frm.get('employee_num').invalid && showInputErrors" class="alert alert-danger">
+    <div *ngIf="frm.get('employee_num').errors.required">
+      Required.
+    </div>
+  </div>
+  <div>
+    <label>Employee Date:
+      <input id="employee_date" type="date" formControlName="employee_date" placeholder="Employee Date"/>
+    </label>
+  </div>
+  <div *ngIf="frm.get('employee_date').invalid && showInputErrors" class="alert alert-danger">
+    <div *ngIf="frm.get('employee_date').errors.required">
+      Required.
+    </div>
+  </div>
+  <div>
+    <label>Terminated Date:
+      <input id="terminated_date" type="date" formControlName="terminated_date" placeholder="Terminated Date"/>
+    </label>
+  </div>
+  <button (click)="save()">save</button>
+</div>

@@ -1,0 +1,12 @@
+<app-employee-detail [isAdd]="true"></app-employee-detail>
+
+<h2>Employees</h2>
+
+<ul class="employees">
+  <li *ngFor="let employee of employees" (click)="onSelect(employee)" [class.selected]="employee === selectedEmployee">
+    <span class="badge">{{employee.id}}</span> {{employee.person.first_name | uppercase}} {{employee.person.last_name | uppercase}}
+    <button class="delete" title="delete employee" (click)="delete(employee)">x</button>
+  </li>
+</ul>
+
+<app-employee-detail [employee]="selectedEmployee" *ngIf="selectedEmployee"></app-employee-detail>

@@ -1,0 +1,32 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    ports:
+        - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/code
+
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: ./Dockerfile
+    command: node server.js
+    ports:
+      - "4200:4200"
+    depends_on:
+      - db
+      - backend
+
+volumes:
+  data: {}
